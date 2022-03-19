@@ -1,1 +1,1 @@
-# snake-python
+# snake-python-terminal
