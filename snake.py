@@ -15,7 +15,7 @@ curses.noecho()
 win.border(0)
 
 snake = [(4,10), (4,9), (4,8)] # snake body
-food = (randint(1, WINDOW_HEIGHT - 2), randint(1, WINDOW_WIDTH - 2))
+food = (12, 40) # food coordinates
 win.addch(food[0], food[1], 'X')
 
 score = 0
