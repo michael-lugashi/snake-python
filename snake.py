@@ -14,7 +14,7 @@ win.keypad(True)
 curses.noecho()
 win.border(0)
 
-snake = [[4,10], [4,9], [4,8]] # snake body
+snake = [(4,10), (4,9), (4,8)] # snake body
 food = (randint(1, WINDOW_HEIGHT - 2), randint(1, WINDOW_WIDTH - 2))
 win.addch(food[0], food[1], 'X')
 
@@ -51,24 +51,24 @@ while key != ESC:
     snake_tail = snake[-1] 
 
     if key == KEY_LEFT and prev_key != KEY_RIGHT:
-        snake.insert(0, [snake_head[0], snake_head[1] - 1])
+        snake.insert(0, (snake_head[0], snake_head[1] - 1))
     elif key == KEY_LEFT:
-        snake.insert(0, [snake_head[0], snake_head[1] + 1])
+        snake.insert(0, (snake_head[0], snake_head[1] + 1))
         key = prev_key
     elif key == KEY_RIGHT and prev_key != KEY_LEFT:
-        snake.insert(0, [snake_head[0], snake_head[1] + 1])
+        snake.insert(0, (snake_head[0], snake_head[1] + 1))
     elif key == KEY_RIGHT:
-        snake.insert(0, [snake_head[0], snake_head[1] - 1])
+        snake.insert(0, (snake_head[0], snake_head[1] - 1))
         key = prev_key
     elif key == KEY_UP and prev_key != KEY_DOWN:
-        snake.insert(0, [snake_head[0] - 1, snake_head[1]])
+        snake.insert(0, (snake_head[0] - 1, snake_head[1]))
     elif key == KEY_UP:
-        snake.insert(0, [snake_head[0] + 1, snake_head[1]])
+        snake.insert(0, (snake_head[0] + 1, snake_head[1]))
         key = prev_key
     elif key == KEY_DOWN and prev_key != KEY_UP:
-        snake.insert(0, [snake_head[0] + 1, snake_head[1]])
+        snake.insert(0, (snake_head[0] + 1, snake_head[1]))
     elif key == KEY_DOWN:
-        snake.insert(0, [snake_head[0] - 1, snake_head[1]])
+        snake.insert(0, (snake_head[0] - 1, snake_head[1]))
         key = prev_key
 
     snake_head = snake[0]
@@ -85,9 +85,10 @@ while key != ESC:
         break
 
     # check if snake ate food
-    if snake_head[0] == food[0] and snake_head[1] == food[1]:
+    if snake_head == food:
         win.addch(food[0], food[1], ' ')
-        food = (randint(1, WINDOW_HEIGHT - 2), randint(1, WINDOW_WIDTH - 2))
+        while(food in snake):
+            food = (randint(1, WINDOW_HEIGHT - 2), randint(1, WINDOW_WIDTH - 2))
         win.addch(food[0], food[1], 'X')
         score += 1
     else:
