@@ -7,4 +7,10 @@ well in the terminal of IDE's. It's recomended you run this application through 
 If given an error about line space zoom out of the terminal with "ctrl + scroll out". To run this 
 game go to the python directory in the terminal and run "python snake.py".
 
+Game Intructions: 
+-Use the arrow keys to move.
+-Space bar to pause.
+-Esc to exit.
+-Hold arrow key to speed up.
+
 ![Picture Of Application](./picture-of-game.PNG)
